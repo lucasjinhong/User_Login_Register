@@ -1,11 +1,12 @@
-var dotenv = require('dotenv').config();
 var nodemailer = require('nodemailer');
+
+var env = require('../config/development_config');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD
+      user: env.email.email,
+      pass: env.email.password
     },
     tls: {
       rejectUnauthorized: false
@@ -15,7 +16,7 @@ var transporter = nodemailer.createTransport({
 module.exports = function emailSend(email){
 
     var mailOptions = {
-        from: process.env.EMAIL,
+        from: env.email.email,
         to: email,
         subject: 'Sending Email using Node.js',
         text: 'Register Complete!'

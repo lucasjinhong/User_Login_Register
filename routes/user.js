@@ -6,4 +6,7 @@ var user_controller = require('../src/controllers/user_controller')
 router.route('/register')
   .post(user_controller.toRegister);
 
+router.route('/login')
+  .post(user_controller.toLogin);
+
 module.exports = router;
