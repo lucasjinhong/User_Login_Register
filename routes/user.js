@@ -9,4 +9,7 @@ router.route('/register')
 router.route('/login')
   .post(user_controller.toLogin);
 
+router.route('/update')
+  .put(user_controller.toUpdate);
+
 module.exports = router;

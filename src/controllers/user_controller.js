@@ -8,6 +8,8 @@ var token_create = require('../utils/token_create');
 
 var register = require('../model/user_register');
 var login = require('../model/user_login');
+var verify = require('../model/user_verification');
+var update = require('../model/user_updateData');
 
 
 exports.toRegister = async_catch(async(req, res, next) =>{
@@ -40,4 +42,20 @@ exports.toLogin = async_catch(async(req, res, next) => {
   var search = await login(data);
   await res.setHeader('token', token_create(search._id));
   await res.status(200).send('login successful!');
+})
+
+exports.toUpdate = async_catch(async(req, res, next) => {
+
+  var token = req.headers['token'];
+  var password = password_encryption(req.body.password);
+
+  var data = new User({
+    username:req.body.username,
+    password: password,
+    update_date: new Date()
+  });
+
+  var auth = await verify(token);
+  await update(auth, data);
+  await res.status(200).send('update success')
 })

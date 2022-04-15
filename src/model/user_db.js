@@ -17,8 +17,13 @@ var userSchema = new Schema({
         required: [true, 'password is required']
     },
     register_date: {
-        type: Date, 
-        default: Date.now
+        type: Date
+    },
+    update_date: {
+        type: Date
+    },
+    last_login: {
+        type: Date
     }
 })
 
