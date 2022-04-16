@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema
-var ObjectId = Schema.ObjectId;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema
+const ObjectId = Schema.ObjectId;
 
 var userSchema = new Schema({
     _id: ObjectId,
@@ -15,6 +15,17 @@ var userSchema = new Schema({
     password: {
         type: String, 
         required: [true, 'password is required']
+    },
+    email_authorization: {
+        authorization_code: {
+            type: Number
+        },
+        authorized:{
+            type: Boolean
+        },
+        authorized_date:{
+            type: Date
+        }
     },
     register_date: {
         type: Date

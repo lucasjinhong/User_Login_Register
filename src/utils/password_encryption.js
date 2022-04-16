@@ -1,4 +1,4 @@
-var crypto = require('crypto');
+const crypto = require('crypto');
 
 module.exports = function encryption(password){
     var hashPassword = crypto.createHash('sha256');

@@ -1,11 +1,10 @@
-var jwt = require('jsonwebtoken');
-var env = require('../config/development_config');
+const jwt = require('jsonwebtoken');
+const env = require('../config/development_config');
 
 var result = {}
 
 function verification(token){
 
-    var result = '';
     const time = Math.floor(Date.now() / 1000);
 
     return new Promise((resolve, reject) => {

@@ -1,5 +1,5 @@
-var user_mongoose = require('../db/user_mongoose');
-var User = require('../model/user_db');
+const user_mongoose = require('../db/user_mongoose');
+const User = require('../model/user_db');
 
 var result = {}
 
@@ -16,6 +16,11 @@ function loginCheck(email, password){
             if(!obj){
                 result.status = 401;
                 result.message = 'login failed';
+                reject(result);
+            }
+            else if(!obj.email_authorization.authorized){
+                result.status = 401;
+                result.message = 'email unauthorized';
                 reject(result);
             }
             else{

@@ -1,6 +1,6 @@
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-var env = require('../config/development_config');
+const env = require('../config/development_config');
 
 var transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -13,13 +13,13 @@ var transporter = nodemailer.createTransport({
     }
 });
 
-module.exports = function emailSend(email){
+module.exports = function emailSend(email, code){
 
     var mailOptions = {
         from: env.email.email,
         to: email,
-        subject: 'Sending Email using Node.js',
-        text: 'Register Complete!'
+        subject: 'Authentication code of Nodejs',
+        text: 'the authentication code is' + code
     };
 
     transporter.sendMail(mailOptions, function(err, data) {

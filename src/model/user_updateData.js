@@ -1,5 +1,5 @@
-var user_mongoose = require('../db/user_mongoose');
-var User = require('../model/user_db');
+const user_mongoose = require('../db/user_mongoose');
+const User = require('../model/user_db');
 
 result = {};
 
